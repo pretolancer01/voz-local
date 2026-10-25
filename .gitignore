@@ -1,0 +1,13 @@
+/.venv/
+/data/
+/renders/
+/__pycache__/
+/.pytest_cache/
+*.pyc
+*.wav
+*.m4a
+*.mp3
+*.flac
+*.ogg
+*.env
+.env.*

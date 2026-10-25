@@ -1,0 +1,17 @@
+# Chatterbox is installed without its torch==2.6 pin; ROCm Windows needs torch 2.9.
+imageio-ffmpeg>=0.6,<1
+faster-whisper==1.2.1
+av==15.1.0
+numpy>=1.24,<2
+librosa==0.11.0
+resampy==0.4.3
+s3tokenizer
+transformers==5.2.0
+diffusers==0.29.0
+conformer==0.3.2
+safetensors==0.5.3
+spacy-pkuseg
+pykakasi==2.3.0
+pyloudnorm
+omegaconf
+resemble-perth @ git+https://github.com/resemble-ai/Perth.git@master
