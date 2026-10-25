@@ -2,6 +2,8 @@
 
 Aplicativo de desktop para gerar narrações com a própria voz, usando modelos gratuitos executados no computador. Roteiros longos são divididos em trechos, salvos progressivamente e podem ser retomados. O áudio de referência e os resultados permanecem em arquivos locais.
 
+**Executável:** [Voz Local.exe](Voz%20Local.exe) é um lançador para Windows. Ele abre `app.py` usando o ambiente `.venv` instalado nesta mesma pasta. Não inclui Python, PyTorch, modelos ou dependências; conclua a instalação abaixo antes de usá-lo em outro computador.
+
 ## Recursos
 
 - Chatterbox Multilingual V3 e ajuste para português brasileiro.
@@ -18,7 +20,7 @@ py -3.12 -m venv .venv
 # Instale torch e torchaudio compatíveis com sua GPU no ambiente .venv.
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m pip install --no-deps "git+https://github.com/resemble-ai/chatterbox.git@5de7a54aa4e5e2baadb0182dde554908b48b85c2"
-& '.\Abrir Voz Local.cmd'
+& '.\Voz Local.exe'
 ```
 
 Escolha uma gravação sua com pelo menos cinco segundos de fala, digite ou importe o roteiro e clique em **Gerar / retomar**. Para pausar, use **Pausar após este trecho**. A saída padrão é `renders/narracao.wav`. Na primeira execução, os modelos são baixados para `data/`; as gerações seguintes rodam localmente. O motor brasileiro também baixa código do [demo oficial](https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS-pt-br) em uma revisão fixa.
@@ -41,4 +43,10 @@ Use somente gravações que você tem direito de usar. `data/` e `renders/` são
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest -v test_pipeline.py
+```
+
+O executável pode ser recompilado no Windows com o código de `launcher.cs`:
+
+```powershell
+& "$env:WINDIR\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /nologo /target:winexe /optimize+ /platform:anycpu /r:System.Windows.Forms.dll '/out:Voz Local.exe' launcher.cs
 ```
